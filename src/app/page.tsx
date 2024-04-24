@@ -15,6 +15,8 @@ type Project = {
 const PROJECT_URL = `https://api.vercel.com/v9/projects?teamId=${process.env.TEAM_ID}`
 // const USER_URL = 'https://api.vercel.com/v2/user'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const { projects }: { projects: Project[] } = await fetcher(PROJECT_URL, {
     headers: {
