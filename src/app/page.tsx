@@ -12,7 +12,7 @@ type Project = {
   latestDeployments: Deployment[]
 }
 
-const PROJECT_URL = 'https://api.vercel.com/v9/projects'
+const PROJECT_URL = `https://api.vercel.com/v9/projects?teamId=${process.env.TEAM_ID}`
 // const USER_URL = 'https://api.vercel.com/v2/user'
 
 export default async function Home() {
@@ -26,7 +26,7 @@ export default async function Home() {
     <Main className='flex flex-col p-4'>
       <div className='flex flex-grow flex-col space-y-4'>
         <Title>home</Title>
-        <ul className='divide-cb-dusty-blue divide-y'>
+        <ul className='divide-y divide-cb-dusty-blue'>
           {projects.map(p => {
             const { id, name, latestDeployments } = p
             const alias =
@@ -39,7 +39,7 @@ export default async function Home() {
                 {alias && url ? (
                   <a
                     href={url}
-                    className='text-cb-pink hover:text-cb-pink/75 flex w-full'
+                    className='flex w-full text-cb-pink hover:text-cb-pink/75'
                     target='_blank'
                   >
                     <span className='grow'>{name}</span>
